@@ -1,0 +1,21 @@
+// countries with their codes
+export const Country = [
+	{ label: "Austria", code: "at" },
+	{ label: "Australia", code: "au" },
+	{ label: "Belgium", code: "be" },
+	{ label: "Brazil", code: "br" },
+	{ label: "Canada", code: "ca" },
+	{ label: "Germany", code: "de" },
+	{ label: "Spain", code: "es" },
+	{ label: "France", code: "fr" },
+	{ label: "United Kingdom", code: "gb" },
+	{ label: "Italy", code: "it" },
+	{ label: "India", code: "in" },
+	{ label: "Netherland", code: "nl" },
+	{ label: "New Zealand", code: "nz" },
+	{ label: "Poland", code: "pl" },
+	{ label: "Russia", code: "ru" },
+	{ label: "Singapore", code: "sg" },
+	{ label: "United States", code: "us" },
+	{ label: "South Africa", code: "za" },
+];
