@@ -31,7 +31,7 @@ function JobList(props) {
 				{/* position of the job */}
 				<CardContent>
 					<Typography
-						sx={{ fontSize: 24 }}
+						sx={{fontSize:24}}
 						color="secondary.light"
 						gutterBottom
 					>
@@ -74,20 +74,14 @@ function JobList(props) {
 					<CardActions>
 						<Box
 							style={{ position: "absolute", bottom: "4%" }}
-							sx={{
-								marginLeft: "5px",
-								backgroundColor: "#d500f9",
-								color: "white",
-								padding: "7px 15px 7px 15px",
-								borderRadius: "5px",
-							}}
+							className="job_category"
 						>
 							{props.category}
 						</Box>
 						{/* button for view details related to the job */}
 						<div
-							className=""
 							style={{ position: "absolute", bottom: "4%", right: "3%" }}
+							className="details-btn"
 						>
 							<Button
 								size="medium"

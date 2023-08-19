@@ -33,26 +33,20 @@ b{
 	font-weight: 600;
 	letter-spacing: 1.5px;
 }
-.App-header {
-	background-color: #282c34;
-	min-height: 100vh;
-	display: flex;
-	flex-direction: column;
-	align-items: center;
-	justify-content: center;
-	font-size: calc(10px + 2vmin);
+
+.job_category{
+	margin-left: 5px;
+	background-color: #d500f9;
 	color: white;
+	padding: 7px 15px 7px 15px;
+	border-radius: 5px;
+	font-size: 12px;
 }
-
-.App-link {
-	color: #61dafb;
-}
-
-@keyframes App-logo-spin {
-	from {
-		transform: rotate(0deg);
+@media (max-width: 600px) {
+	.job_category{
+		padding:5px 9px 5px 9px;
 	}
-	to {
-		transform: rotate(360deg);
+	.details-btn{
+	font-size: 12px;
 	}
 }
