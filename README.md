@@ -1,4 +1,4 @@
-# Job-search-portal
+# Job-Finder
 1. **Bookmark Management Web App:**
    Developed a full-stack web application for job seekers to bookmark and manage job listings. Utilized React for the frontend and Spring Boot for the backend, enabling users to save and remove job listings with real-time updates. Incorporated authentication and API integration for a seamless user experience.
 
