@@ -8,15 +8,61 @@ import Typography from "@mui/material/Typography";
 import Dialog from "@mui/material/Dialog";
 import DialogBoxContent from "./DialogBoxContent";
 import DialogTitle from "@mui/material/DialogTitle";
-import CloseImg from "../images/cross.svg";
 import LocationOnIcon from "@mui/icons-material/LocationOn";
 import BusinessIcon from "@mui/icons-material/Business";
 import AccessTimeFilledIcon from "@mui/icons-material/AccessTimeFilled";
+import TurnedInIcon from "@mui/icons-material/TurnedIn";
+import TurnedInNotIcon from "@mui/icons-material/TurnedInNot";
+import { useAuth0 } from "@auth0/auth0-react";
+import axios from "axios";
+
 function JobList(props) {
 	// adding the functionality of open and close dialog box
 	const [open, setOpen] = React.useState(false);
 	const handleOpen = () => setOpen(true);
 	const handleClose = () => setOpen(false);
+	const { user } = useAuth0();
+	const getBookmarkState = () => {
+		const savedStates =
+			JSON.parse(localStorage.getItem("bookmarkedStates")) || {};
+		return savedStates[props.jobId] || false;
+	};
+
+	// Function to set bookmarked state for a specific job ID
+	const setBookmarkState = (value) => {
+		const savedStates =
+			JSON.parse(localStorage.getItem("bookmarkedStates")) || {};
+		localStorage.setItem(
+			"bookmarkedStates",
+			JSON.stringify({ ...savedStates, [props.jobId]: value })
+		);
+	};
+
+	// Initialize bookmarked state with the value from localStorage or false if not present
+	const [bookmarked, setBookmarked] = React.useState(getBookmarkState());
+
+	const onBookmarkHandler = async () => {
+		try {
+			const requestData = {
+				jobId: props.jobId,
+				userId: user && user.nickname,
+				jobTitle: props.title,
+				jobLocation: props.location,
+				jobLink: props.apply,
+			};
+
+			await axios.post("http://localhost:8080/bookmarks/toggle", requestData);
+			const newBookmarked = !bookmarked;
+			setBookmarked(newBookmarked);
+			// Save the updated bookmarked state for the specific job ID
+			setBookmarkState(newBookmarked);
+			console.log(requestData);
+			console.log("bookmarked");
+		} catch (error) {
+			console.error("Error toggling bookmark:", error);
+		}
+	};
+
 	return (
 		<Box>
 			{/* each job in a card component (with some information) */}
@@ -31,7 +77,7 @@ function JobList(props) {
 				{/* position of the job */}
 				<CardContent>
 					<Typography
-						sx={{fontSize:24}}
+						sx={{ fontSize: 24 }}
 						color="secondary.light"
 						gutterBottom
 					>
@@ -100,9 +146,33 @@ function JobList(props) {
 							aria-describedby="alert-dialog-description"
 							variant="dialogBox"
 						>
-							<div style={{ color: "white", backgroundColor: "#22303e" }}>
-								<div className="close-img" onClick={handleClose}>
-									<img src={CloseImg} alt="" width="12px" />
+							<div
+								style={{
+									color: "white",
+									backgroundColor: "#22303e",
+									paddingTop: "2rem",
+								}}
+							>
+								<div onClick={onBookmarkHandler}>
+									{bookmarked ? (
+										<TurnedInIcon
+											style={{
+												position: "absolute",
+												top: "3%",
+												right: "5%",
+												cursor: "pointer",
+											}}
+										/>
+									) : (
+										<TurnedInNotIcon
+											style={{
+												position: "absolute",
+												top: "3%",
+												right: "5%",
+												cursor: "pointer",
+											}}
+										/>
+									)}
 								</div>
 								<Typography variant="h4" ml={3}>
 									Job Details

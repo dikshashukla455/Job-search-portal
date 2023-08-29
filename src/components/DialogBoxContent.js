@@ -1,9 +1,11 @@
 import React from "react";
 import { Box } from "@mui/material";
+
 // Dialog box for job details section
 function DialogBoxContent(props) {
 	return (
 		<Box fontSize="16px" style={{ color: "#e6e6e6" }}>
+
 			<div>
 				{/* job-id */}
 				{props.jobId && (

@@ -17,24 +17,24 @@ body {
 	justify-content: center;
 	color: #fff;
 }
-.rows{
+.rows {
 	color: #fff !important;
 }
-.close-img{
-    text-align: right;
-    margin:25px 38px 0 0;
-    cursor: pointer;
+.close-img {
+	text-align: right;
+	margin: 25px 38px 0 0;
+	cursor: pointer;
 }
-a{
+a {
 	text-decoration: none;
 }
-b{
+b {
 	color: white !important;
 	font-weight: 600;
 	letter-spacing: 1.5px;
 }
 
-.job_category{
+.job_category {
 	margin-left: 5px;
 	background-color: #d500f9;
 	color: white;
@@ -42,11 +42,38 @@ b{
 	border-radius: 5px;
 	font-size: 12px;
 }
-@media (max-width: 600px) {
-	.job_category{
-		padding:5px 9px 5px 9px;
-	}
-	.details-btn{
+.bookmark-container {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	background-color: #3b4754;
+	border-radius: 10px;
+	margin: 20px;
+	padding: 12px 20px;
+}
+.btn-apply {
+	background-color:#d500f9 ;
+	width: 100%;
+	padding: 10px 20px;
+	margin: 20px 0px 10px 0;
 	font-size: 12px;
+}
+@media (max-width: 600px) {
+	.job_category {
+		padding: 5px 9px 5px 9px;
 	}
+	.details-btn {
+		font-size: 12px;
+	}
+	.bookmark-location {
+		display: none;
+	}
+	.bookmark-container{
+		font-size: 12px;
+	}
+	.btn-apply{
+		font-size:10px;
+
+	}
+
 }

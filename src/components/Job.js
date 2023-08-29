@@ -14,6 +14,7 @@ import Contract from "./Contract";
 import JobList from "./JobList";
 import RowPage from "./RowPage";
 import RotateLoader from "react-spinners/RotateLoader";
+import Bookmarks from "./Bookmarks";
 
 function Job() {
 	const [positionInput, setPositionInput] = React.useState("");
@@ -52,6 +53,7 @@ function Job() {
 			.then((response) => {
 				SetLoadings(false);
 				setData(response);
+				console.log(response);
 			});
 		setPositionInput("");
 		setInputValue("");
